@@ -1,0 +1,31 @@
+@import "/src/assets/sass/variables";
+
+.appLayout {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background-color: $primary-color;
+  color: rgb(255, 255, 255);
+  // padding: 10px;
+  top: 0;
+  z-index: 10;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.footer {
+  height: 50px;
+  background-color: $primary-color;
+  color: rgb(255, 255, 255);
+  padding: 10px;
+  text-align: center;
+  position: sticky;
+  bottom: 0;
+}

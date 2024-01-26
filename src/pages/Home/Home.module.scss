@@ -1,0 +1,17 @@
+.home {
+  padding: 20px;
+}
+
+.homeCardsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+.homePaginationContainer {
+  display: flex;
+  justify-content: end;
+  padding: 24px;
+}

@@ -1,0 +1,52 @@
+@mixin breakpoint($width) {
+  @if $width == x-large-laptop {
+    @media only screen and (max-width: 1599px) {
+      @content;
+    }
+  }
+  @if $width == large-laptop {
+    @media only screen and (max-width: 1440px) {
+      @content;
+    }
+  }
+  @if $width == laptop {
+    @media only screen and (max-width: 1366px) {
+      @content;
+    }
+  }
+  @if $width == small-laptop {
+    @media only screen and (max-width: 1200px) {
+      @content;
+    }
+  }
+  @if $width == desktop {
+    @media only screen and (max-width: 1024px) {
+      @content;
+    }
+  }
+  @if $width == ipad {
+    @media only screen and (max-width: 991.5px) {
+      @content;
+    }
+  }
+  @if $width == tab {
+    @media only screen and (max-width: 767.5px) {
+      @content;
+    }
+  }
+  @if $width == small-tab {
+    @media only screen and (max-width: 575px) {
+      @content;
+    }
+  }
+  @if $width == mobile {
+    @media only screen and (max-width: 480px) {
+      @content;
+    }
+  }
+  @if $width == small-mobile {
+    @media only screen and (max-width: 360px) {
+      @content;
+    }
+  }
+}
