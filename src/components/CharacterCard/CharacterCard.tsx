@@ -1,24 +1,25 @@
-import { Card } from "antd";
-const { Meta } = Card;
+import { Card } from "components";
+import Meta from "antd/es/card/Meta";
+import { getCharacterImageUrl, characterSkinColorMap } from "lib";
+import { Character } from "types";
 
 interface CharacterCardProps {
-  title: string;
-  description?: string;
+  character: Character;
+  onClick: (character: Character) => void;
 }
 
-const CharacterCard = ({ title, description }: CharacterCardProps) => (
-  <Card
-    hoverable
-    style={{ width: 240 }}
-    cover={
-      <img
-        alt="example"
-        src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-      />
-    }
-  >
-    <Meta title={title} description={description} />
-  </Card>
-);
+const CharacterCard = ({ character, onClick }: CharacterCardProps) => {
+  const { name, skin_color, url } = character || {};
+  return (
+    <Card
+      hoverable
+      style={{ width: 240, backgroundColor: characterSkinColorMap[skin_color] }}
+      cover={<img alt="character" src={getCharacterImageUrl(url)} />}
+      onClick={() => onClick(character)}
+    >
+      <Meta title={name} description={skin_color} />
+    </Card>
+  );
+};
 
 export default CharacterCard;

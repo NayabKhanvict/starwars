@@ -1,32 +1,31 @@
+import { message } from "antd";
 import { useQuery } from "@tanstack/react-query";
 import { Character } from "types";
 import { getReq } from "lib";
 import { AxiosError } from "axios";
-import { message } from "antd";
 
-interface SwapiResponse {
+interface GetPeopleAPI {
   count: number;
   next: string | null;
   previous: string | null;
   results: Character[];
 }
 
-interface GetCharacterParams {
+interface GetPeopleParams {
   page: number;
 }
 
-const useGetCharacters = (params: GetCharacterParams) => {
+const useGetPeople = (params: GetPeopleParams) => {
   const { page } = params;
-  return useQuery<SwapiResponse, AxiosError>(
+  return useQuery<GetPeopleAPI, AxiosError>(
     ["people", params],
-    () => getReq<SwapiResponse>(`people?page=${page}`),
+    () => getReq<GetPeopleAPI>(`people?page=${page}`),
     {
       onError: (err: AxiosError) => {
-        console.log("error", err.message);
         message.error(err.message, 5);
       },
     }
   );
 };
 
-export default useGetCharacters;
+export default useGetPeople;

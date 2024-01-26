@@ -1,16 +1,29 @@
-import { CharacterCard, Pagination, Spin } from "components";
-import { useGetCharacters } from "hooks/api";
-import styles from "./People.module.scss";
 import { useCallback, useState } from "react";
+import { CharacterCard, Pagination, Spin } from "components";
+import { useGetPeople } from "hooks/api";
+import { Character } from "types";
+import { CharacterModal } from "components/Modals";
+import styles from "./People.module.scss";
 
 const People = () => {
   const [page, setPage] = useState<number>(1);
-  const { data, isLoading } = useGetCharacters({ page: page });
+  const [characterModalConfig, setCharacterModalConfig] = useState<{
+    visible: boolean;
+    character: Character | null;
+  }>({
+    visible: false,
+    character: null,
+  });
+  const { data, isLoading } = useGetPeople({ page: page });
   const { results: characters } = data || {};
 
   const onPageChange = useCallback((selectedPage: number) => {
     setPage(selectedPage);
   }, []);
+
+  const handleClickCharacterCard = (character: Character) => {
+    setCharacterModalConfig({ visible: true, character: character });
+  };
 
   return (
     <Spin spinning={isLoading}>
@@ -27,12 +40,16 @@ const People = () => {
           {characters?.map((character, index) => (
             <CharacterCard
               key={`${character.name}${index}`}
-              title={character.name}
-              description={character.skin_color}
+              character={character}
+              onClick={handleClickCharacterCard}
             />
           ))}
         </div>
       </div>
+      <CharacterModal
+        characterModalConfig={characterModalConfig}
+        setCharacterModalConfig={setCharacterModalConfig}
+      />
     </Spin>
   );
 };

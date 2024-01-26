@@ -1,5 +1,5 @@
 import { Layout } from "antd";
-import starwarsLogo from "assets/svgs/starwars-logo.svg";
+import starwarsLogo from "/starwars-logo.svg";
 import styles from "./AppLayout.module.scss";
 
 const { Header, Footer, Content } = Layout;

@@ -1,3 +1,4 @@
-import useGetCharacters from "./useGetCharacters";
+import useGetPeople from "./useGetPeople";
+import useGetPlanet from "./useGetPlanet";
 
-export { useGetCharacters };
+export { useGetPeople, useGetPlanet };
