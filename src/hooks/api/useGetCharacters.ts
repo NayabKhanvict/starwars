@@ -1,6 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { Character } from "types";
 import { getReq } from "lib";
+import { AxiosError } from "axios";
+import { message } from "antd";
 
 interface SwapiResponse {
   count: number;
@@ -15,8 +17,15 @@ interface GetCharacterParams {
 
 const useGetCharacters = (params: GetCharacterParams) => {
   const { page } = params;
-  return useQuery<SwapiResponse>(["people", params], () =>
-    getReq<SwapiResponse>(`people?page=${page}`)
+  return useQuery<SwapiResponse, AxiosError>(
+    ["people", params],
+    () => getReq<SwapiResponse>(`people?page=${page}`),
+    {
+      onError: (err: AxiosError) => {
+        console.log("error", err.message);
+        message.error(err.message, 5);
+      },
+    }
   );
 };
 

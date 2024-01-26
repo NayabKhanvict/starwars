@@ -1,19 +1,23 @@
 import { Suspense } from "react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { message } from "antd";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { QueryProvider } from "Providers";
 import { AppRoutes } from "routes";
+import { FallbackUI } from "components";
 // import "./App.css";
 
-const App = () => {
-  const queryClient = new QueryClient();
+message.config({
+  top: 80,
+});
 
+const App = () => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <Suspense fallback={<>Loading</>}>
+    <QueryProvider>
+      <Suspense fallback={<FallbackUI />}>
         <AppRoutes />
       </Suspense>
       <ReactQueryDevtools initialIsOpen={false} />
-    </QueryClientProvider>
+    </QueryProvider>
   );
 };
 

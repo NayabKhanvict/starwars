@@ -1,9 +1,9 @@
 import { CharacterCard, Pagination, Spin } from "components";
 import { useGetCharacters } from "hooks/api";
-import styles from "./Home.module.scss";
+import styles from "./People.module.scss";
 import { useCallback, useState } from "react";
 
-const Home = () => {
+const People = () => {
   const [page, setPage] = useState<number>(1);
   const { data, isLoading } = useGetCharacters({ page: page });
   const { results: characters } = data || {};
@@ -14,16 +14,16 @@ const Home = () => {
 
   return (
     <Spin spinning={isLoading}>
-      <div className={styles.home}>
+      <div className={styles.people}>
         <Pagination
           current={page}
           onChange={onPageChange}
           total={100}
           simple
           showSizeChanger={false}
-          className={styles.homePaginationContainer}
+          className={styles.peoplePaginationContainer}
         />
-        <div className={styles.homeCardsContainer}>
+        <div className={styles.peopleCardsContainer}>
           {characters?.map((character, index) => (
             <CharacterCard
               key={`${character.name}${index}`}
@@ -37,4 +37,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default People;

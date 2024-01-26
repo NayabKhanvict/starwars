@@ -1,5 +1,5 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import { Home } from "pages";
+import { People } from "pages";
 import PublicRoutes from "./PublicRoutes";
 
 const AppRoutes = () => {
@@ -8,7 +8,7 @@ const AppRoutes = () => {
       <Routes>
         <Route element={<PublicRoutes />}>
           <Route path="*" element={<Navigate to="/people" />} />
-          <Route path="/people" element={<Home />} />
+          <Route path="/people" element={<People />} />
         </Route>
       </Routes>
     </BrowserRouter>

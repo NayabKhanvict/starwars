@@ -9,7 +9,7 @@ export interface Character {
   gender: string;
   homeworld: string;
   films: string[];
-  species: any[];
+  species: unknown[];
   vehicles: string[];
   starships: string[];
   created: string;

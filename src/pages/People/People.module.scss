@@ -1,8 +1,8 @@
-.home {
+.people {
   padding: 20px;
 }
 
-.homeCardsContainer {
+.peopleCardsContainer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 20px;
@@ -10,8 +10,8 @@
   overflow-y: auto;
 }
 
-.homePaginationContainer {
+.peoplePaginationContainer {
   display: flex;
   justify-content: end;
-  padding: 24px;
-}/*# sourceMappingURL=Home.module.css.map */
+  padding: 20px 100px 24px 0;
+}
