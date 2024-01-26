@@ -1,5 +1,4 @@
-import { Card } from "components";
-import Meta from "antd/es/card/Meta";
+import { Card } from "antd";
 import { getCharacterImageUrl, characterSkinColorMap } from "lib";
 import { Character } from "types";
 
@@ -17,7 +16,7 @@ const CharacterCard = ({ character, onClick }: CharacterCardProps) => {
       cover={<img alt="character" src={getCharacterImageUrl(url)} />}
       onClick={() => onClick(character)}
     >
-      <Meta title={name} description={skin_color} />
+      <Card.Meta title={name} description={skin_color} />
     </Card>
   );
 };

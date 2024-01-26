@@ -1,5 +1,4 @@
 import { Layout } from "antd";
-import starwarsLogo from "/starwars-logo.svg";
 import styles from "./AppLayout.module.scss";
 
 const { Header, Footer, Content } = Layout;
@@ -12,7 +11,7 @@ const AppLayout = ({ children }: AppLayoutProps) => {
   return (
     <Layout className={styles.appLayout}>
       <Header className={styles.header}>
-        <img src={starwarsLogo} height={65} />
+        <img src="/starwars-logo.svg" height={65} />
       </Header>
       <Content className={styles.content}>{children}</Content>
       <Footer className={styles.footer} />
