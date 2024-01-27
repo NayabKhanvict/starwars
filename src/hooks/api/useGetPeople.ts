@@ -16,7 +16,7 @@ interface GetPeopleParams {
 }
 
 const useGetPeople = (params: GetPeopleParams) => {
-  const { page } = params;
+  const { page } = params || {};
   return useQuery<GetPeopleAPI, AxiosError>(
     ["people", params],
     () => getReq<GetPeopleAPI>(`people?page=${page}`),
