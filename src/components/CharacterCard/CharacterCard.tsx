@@ -12,6 +12,7 @@ const CharacterCard = ({ character, onClick }: CharacterCardProps) => {
   const { name, skin_color, url } = character || {};
   return (
     <Card
+      data-testid={`character-card-${name.replace(/\s/g, "")}`}
       hoverable
       style={{ width: 240, backgroundColor: characterSkinColorMap[skin_color] }}
       cover={<img alt="character" src={getCharacterImageUrl(url)} />}
