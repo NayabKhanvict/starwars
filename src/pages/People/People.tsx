@@ -31,7 +31,7 @@ const People = () => {
         <Pagination
           current={page}
           onChange={onPageChange}
-          total={100}
+          total={data?.count}
           simple
           showSizeChanger={false}
           className={styles.peoplePaginationContainer}
