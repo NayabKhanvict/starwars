@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { CharacterCard, Pagination, Spin } from "components";
 import { useGetPeople } from "hooks/api";
 import { Character } from "types";
@@ -17,9 +17,9 @@ const People = () => {
   const { data, isLoading } = useGetPeople({ page: page });
   const { results: characters } = data || {};
 
-  const onPageChange = useCallback((selectedPage: number) => {
+  const onPageChange = (selectedPage: number) => {
     setPage(selectedPage);
-  }, []);
+  };
 
   const handleClickCharacterCard = (character: Character) => {
     setCharacterModalConfig({ visible: true, character: character });
